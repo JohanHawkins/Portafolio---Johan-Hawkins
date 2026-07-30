@@ -3,33 +3,70 @@
 ## Stack
 - Frontend: React + TypeScript + Vite + Tailwind + Axios + React Query
 - Backend: Node.js + Express + TypeScript + Prisma ORM + Zod
-- DB: PostgreSQL
+- DB: PostgreSQL (Supabase)
 
-## API
-- `GET /api/projects` — listar proyectos
-- `GET /api/skills` — listar habilidades
-- `POST /api/contact` — enviar mensaje de contacto
+---
 
-## Estructura
-- `frontend/` — components, pages, services, hooks, types
-- `backend/` — controllers, routes, services, middlewares, prisma
+## Prioridades
 
-## Fases
-1. Diseño (estructura + Figma)
-2. Frontend (layout, componentes, páginas)
-3. Backend (API REST, DB, validaciones)
-4. Integración (conectar frontend/backend)
-5. Funcionalidades (formulario contacto, proyectos dinámicos)
-6. Deploy (Vercel + Render + Supabase)
-7. Optimización (SEO, performance, responsive)
+### P0 — MVP (esencial para el deploy)
 
-## Prácticas
-- TypeScript, código modular, separación de responsabilidades
-- Validación Zod, manejo de errores, seguridad básica
-- Commits semánticos (feat:, fix:, refactor:)
-- Ramas: main, develop, feature/*
+| # | Tarea | Depende de |
+|---|-------|------------|
+| 1 | Diseñar layout responsive en Figma (mobile-first) | — |
+| 2 | Inicializar proyecto frontend con Vite + React + TS + Tailwind | — |
+| 3 | Crear layout base: Navbar, Hero, Footer, secciones | 2 |
+| 4 | Componentes reutilizables: Button, Card, SectionTitle, Tag | 2 |
+| 5 | Páginas estáticas: Home, About, Projects, Contact | 3, 4 |
+| 6 | Inicializar proyecto backend con Express + TS + Prisma | — |
+| 7 | Configurar Prisma + conectar a PostgreSQL (Supabase) | 6 |
+| 8 | Modelo `Project`: id, title, description, image, tags, githubUrl, liveUrl, createdAt | 7 |
+| 9 | Modelo `Skill`: id, name, category, icon, order | 7 |
+| 10 | Modelo `Message`: id, name, email, message, createdAt | 7 |
+| 11 | Endpoint `GET /api/projects` | 8 |
+| 12 | Endpoint `GET /api/skills` | 9 |
+| 13 | Endpoint `POST /api/contact` (con validación Zod) | 10 |
+| 14 | Servicio `api.ts` en frontend con Axios + tipos | 2 |
+| 15 | Hook `useProjects` con React Query | 14 |
+| 16 | Hook `useSkills` con React Query | 14 |
+| 17 | Sección "Proyectos" dinámica conectada al backend | 5, 15 |
+| 18 | Sección "Habilidades" dinámica conectada al backend | 5, 16 |
+| 19 | Formulario de contacto funcional (POST con React Query) | 5, 13 |
+| 20 | Manejo global de errores en frontend (toast/alert) | 14 |
+| 21 | Manejo de errores en backend (middleware global) | 6 |
+| 22 | Loading states y empty states en frontend | 15, 16 |
+| 23 | Deploy frontend → Vercel | 17, 18, 19 |
+| 24 | Deploy backend → Render | 11, 12, 13 |
+| 25 | Configurar variables de entorno en producción | 23, 24 |
 
-## Mejoras futuras
-- Autenticación admin
-- Panel de administración
-- Dark mode, analytics, caching
+### P1 — Calidad y pulido
+
+| # | Tarea | Depende de |
+|---|-------|------------|
+| 26 | SEO básico: meta tags, Open Graph, title dinámico | 3 |
+| 27 | Animaciones suaves (framer-motion o CSS transitions) | 3 |
+| 28 | Responsive design completo (testear 3 breakpoints) | 3 |
+| 29 | Optimizar imágenes (WebP, lazy loading) | 17 |
+| 30 | Configurar PropTypes o validación de props en componentes | 4 |
+| 31 | Testing de API endpoints (manual o con Postman) | 11, 12, 13 |
+| 32 | Rate limiting en `POST /api/contact` | 13 |
+
+### P2 — Mejoras futuras
+
+| # | Tarea | Depende de |
+|---|-------|------------|
+| 33 | Autenticación JWT (admin) | 6 |
+| 34 | Panel admin CRUD para proyectos y habilidades | 33 |
+| 35 | Dark mode con contexto de React + persistencia | 3 |
+| 36 | Analytics (Google Analytics o Plausible) | 23 |
+| 37 | Caching con Redis o React Query staleTime avanzado | 14 |
+| 38 | Paginación en `GET /api/projects` | 11 |
+
+---
+
+## Buenas prácticas
+- TypeScript estricto en frontend y backend
+- Commits semánticos: `feat:`, `fix:`, `refactor:`, `style:`, `docs:`, `chore:`
+- Ramas: `main`, `develop`, `feature/<nombre>`
+- Separación de responsabilidades (controllers, services, routes)
+- Zod schemas compartidos entre validación y tipos
