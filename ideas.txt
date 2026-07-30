@@ -1,66 +1,70 @@
-# Portafolio Web - Johan Hawkins (Ing. Sistemas Junior)
+# Portafolio Web — Johan Hawkins (Ing. Sistemas Junior)
+
+SPA (Single Page Application) sin autenticación. Una sola página con secciones.
 
 ## Stack
 - Frontend: React + TypeScript + Vite + Tailwind + Axios + React Query
 - Backend: Node.js + Express + TypeScript + Prisma ORM + Zod
-- DB: PostgreSQL (Supabase)
+- DB: PostgreSQL (local → Supabase en producción)
 
 ---
 
-## Prioridades
+## Progreso
 
-### P0 — MVP (esencial para el deploy)
+### ✅ Completado (P0)
 
-| # | Tarea | Depende de |
-|---|-------|------------|
-| 1 | Diseñar layout responsive en Figma (mobile-first) | — |
-| 2 | Inicializar proyecto frontend con Vite + React + TS + Tailwind | — |
-| 3 | Crear layout base: Navbar, Hero, Footer, secciones | 2 |
-| 4 | Componentes reutilizables: Button, Card, SectionTitle, Tag | 2 |
-| 5 | Páginas estáticas: Home, About, Projects, Contact | 3, 4 |
-| 6 | Inicializar proyecto backend con Express + TS + Prisma | — |
-| 7 | Configurar Prisma + conectar a PostgreSQL (Supabase) | 6 |
-| 8 | Modelo `Project`: id, title, description, image, tags, githubUrl, liveUrl, createdAt | 7 |
-| 9 | Modelo `Skill`: id, name, category, icon, order | 7 |
-| 10 | Modelo `Message`: id, name, email, message, createdAt | 7 |
-| 11 | Endpoint `GET /api/projects` | 8 |
-| 12 | Endpoint `GET /api/skills` | 9 |
-| 13 | Endpoint `POST /api/contact` (con validación Zod) | 10 |
-| 14 | Servicio `api.ts` en frontend con Axios + tipos | 2 |
-| 15 | Hook `useProjects` con React Query | 14 |
-| 16 | Hook `useSkills` con React Query | 14 |
-| 17 | Sección "Proyectos" dinámica conectada al backend | 5, 15 |
-| 18 | Sección "Habilidades" dinámica conectada al backend | 5, 16 |
-| 19 | Formulario de contacto funcional (POST con React Query) | 5, 13 |
-| 20 | Manejo global de errores en frontend (toast/alert) | 14 |
-| 21 | Manejo de errores en backend (middleware global) | 6 |
-| 22 | Loading states y empty states en frontend | 15, 16 |
-| 23 | Deploy frontend → Vercel | 17, 18, 19 |
-| 24 | Deploy backend → Render | 11, 12, 13 |
-| 25 | Configurar variables de entorno en producción | 23, 24 |
+| # | Tarea |
+|---|-------|
+| 2 | Inicializar proyecto frontend con Vite + React + TS + Tailwind |
+| 6 | Inicializar proyecto backend con Express + TS + Prisma |
+| 7 | Configurar Prisma + conectar a PostgreSQL |
+| 8 | Modelo `Project` |
+| 9 | Modelo `Skill` |
+| 10 | Modelo `Message` |
+| 11 | Endpoint `GET /api/projects` |
+| 12 | Endpoint `GET /api/skills` |
+| 13 | Endpoint `POST /api/contact` (con validación Zod) |
+| 14 | Servicio `api.ts` en frontend con Axios + tipos |
+| 15 | Hook `useProjects` con React Query |
+| 16 | Hook `useSkills` con React Query |
+| 20 | Manejo de errores en frontend (loading / error states) |
+| 21 | Manejo de errores en backend (middleware global) |
+| 22 | Loading / empty states en frontend |
+| 32 | Rate limiting en `POST /api/contact` |
 
-### P1 — Calidad y pulido
+### 🔨 Por hacer
 
-| # | Tarea | Depende de |
-|---|-------|------------|
-| 26 | SEO básico: meta tags, Open Graph, title dinámico | 3 |
-| 27 | Animaciones suaves (framer-motion o CSS transitions) | 3 |
-| 28 | Responsive design completo (testear 3 breakpoints) | 3 |
-| 29 | Optimizar imágenes (WebP, lazy loading) | 17 |
-| 30 | Configurar PropTypes o validación de props en componentes | 4 |
-| 31 | Testing de API endpoints (manual o con Postman) | 11, 12, 13 |
-| 32 | Rate limiting en `POST /api/contact` | 13 |
+#### P0 — MVP (esencial para el deploy)
 
-### P2 — Mejoras futuras
+| # | Tarea |
+|---|-------|
+| 1 | Diseñar layout responsive (mobile-first) |
+| 3 | Estilizar layout base: Navbar, Hero, Footer |
+| 4 | Estilizar componentes: Button, Card, SectionTitle, Tag |
+| 17 | Sección "Proyectos" con diseño final |
+| 18 | Sección "Habilidades" con diseño final |
+| 19 | Formulario de contacto con diseño final |
+| 23 | Deploy frontend → Vercel |
+| 24 | Deploy backend → Render |
+| 25 | Configurar variables de entorno en producción |
 
-| # | Tarea | Depende de |
-|---|-------|------------|
-| 33 | Autenticación JWT (admin) | 6 |
-| 34 | Panel admin CRUD para proyectos y habilidades | 33 |
-| 35 | Dark mode con contexto de React + persistencia | 3 |
-| 36 | Analytics (Google Analytics o Plausible) | 23 |
-| 37 | Caching con Redis o React Query staleTime avanzado | 14 |
-| 38 | Paginación en `GET /api/projects` | 11 |
+#### P1 — Calidad y pulido
+
+| # | Tarea |
+|---|-------|
+| 26 | SEO básico: meta tags, Open Graph, title dinámico |
+| 27 | Animaciones suaves (framer-motion o CSS transitions) |
+| 28 | Responsive design completo (3 breakpoints) |
+| 29 | Optimizar imágenes (WebP, lazy loading) |
+| 31 | Testing de API endpoints |
+
+#### P2 — Futuro
+
+| # | Tarea |
+|---|-------|
+| 35 | Dark mode con contexto de React + persistencia |
+| 36 | Analytics (Plausible) |
+| 37 | Caching con React Query staleTime avanzado |
 
 ---
 
