@@ -1,0 +1,35 @@
+# Portafolio Web - Johan Hawkins (Ing. Sistemas Junior)
+
+## Stack
+- Frontend: React + TypeScript + Vite + Tailwind + Axios + React Query
+- Backend: Node.js + Express + TypeScript + Prisma ORM + Zod
+- DB: PostgreSQL
+
+## API
+- `GET /api/projects` — listar proyectos
+- `GET /api/skills` — listar habilidades
+- `POST /api/contact` — enviar mensaje de contacto
+
+## Estructura
+- `frontend/` — components, pages, services, hooks, types
+- `backend/` — controllers, routes, services, middlewares, prisma
+
+## Fases
+1. Diseño (estructura + Figma)
+2. Frontend (layout, componentes, páginas)
+3. Backend (API REST, DB, validaciones)
+4. Integración (conectar frontend/backend)
+5. Funcionalidades (formulario contacto, proyectos dinámicos)
+6. Deploy (Vercel + Render + Supabase)
+7. Optimización (SEO, performance, responsive)
+
+## Prácticas
+- TypeScript, código modular, separación de responsabilidades
+- Validación Zod, manejo de errores, seguridad básica
+- Commits semánticos (feat:, fix:, refactor:)
+- Ramas: main, develop, feature/*
+
+## Mejoras futuras
+- Autenticación admin
+- Panel de administración
+- Dark mode, analytics, caching
