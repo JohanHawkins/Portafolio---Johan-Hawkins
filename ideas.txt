@@ -31,19 +31,23 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 21 | Manejo de errores en backend (middleware global) |
 | 22 | Loading / empty states en frontend |
 | 32 | Rate limiting en `POST /api/contact` |
+| 3 | Layout base: Navbar, Hero, Footer |
+| 4 | Componentes UI: Button, Card, SectionTitle, Tag |
+| 17 | Sección Proyectos con diseño final |
+| 18 | Sección Habilidades con diseño final |
+| 19 | Formulario de contacto con diseño final |
+| 1 | Diseño responsive dark-mode (mobile-first) |
+| 38 | Iconos 3D de tecnologías (react-icons + framer-motion) + seed de skills |
+| 39 | Reordenar secciones: Habilidades antes que Proyectos (App + Navbar) |
+| 40 | Corregir enlace de LinkedIn |
+| 41 | Reubicar imágenes del Dashboard en `frontend/public/projects/dashboard` |
 
 ### 🔨 Por hacer
 
-#### P0 — MVP (esencial para el deploy)
+#### P0 — Restante para deploy
 
 | # | Tarea |
 |---|-------|
-| 1 | Diseñar layout responsive (mobile-first) |
-| 3 | Estilizar layout base: Navbar, Hero, Footer |
-| 4 | Estilizar componentes: Button, Card, SectionTitle, Tag |
-| 17 | Sección "Proyectos" con diseño final |
-| 18 | Sección "Habilidades" con diseño final |
-| 19 | Formulario de contacto con diseño final |
 | 23 | Deploy frontend → Vercel |
 | 24 | Deploy backend → Render |
 | 25 | Configurar variables de entorno en producción |
@@ -54,7 +58,6 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 |---|-------|
 | 26 | SEO básico: meta tags, Open Graph, title dinámico |
 | 27 | Animaciones suaves (framer-motion o CSS transitions) |
-| 28 | Responsive design completo (3 breakpoints) |
 | 29 | Optimizar imágenes (WebP, lazy loading) |
 | 31 | Testing de API endpoints |
 
@@ -62,7 +65,6 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 
 | # | Tarea |
 |---|-------|
-| 35 | Dark mode con contexto de React + persistencia |
 | 36 | Analytics (Plausible) |
 | 37 | Caching con React Query staleTime avanzado |
 
