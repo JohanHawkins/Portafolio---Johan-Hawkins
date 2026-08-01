@@ -87,12 +87,12 @@ export default function ProjectsSection() {
                 </StackedPile>
               </>
             ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6">
                 {all.map((project) => (
                   <motion.div
                     layoutId={`project-${project.id}`}
                     key={project.id}
-                    className="group"
+                    className="h-full group"
                   >
                     <ProjectCard project={project} />
                   </motion.div>

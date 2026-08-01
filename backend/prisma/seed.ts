@@ -45,6 +45,20 @@ const projects = [
     githubUrl: null,
     liveUrl: null,
   },
+  {
+    title: 'Portafolio',
+    description:
+      'Portafolio web personal (SPA sin autenticación) con secciones, iconos 3D, carrusel de imágenes y filtro interactivo Habilidades ↔ Proyectos. Contacto con rate limiting, responsive dark-mode y backend Express + Prisma + PostgreSQL.',
+    image: '/projects/portafolio/V1.jpeg',
+    images: [
+      '/projects/portafolio/V1.jpeg',
+      '/projects/portafolio/V2.jpeg',
+      '/projects/portafolio/V3.jpeg',
+    ],
+    tags: ['React', 'TypeScript', 'Express', 'PostgreSQL'],
+    githubUrl: null,
+    liveUrl: null,
+  },
 ]
 
 async function main() {

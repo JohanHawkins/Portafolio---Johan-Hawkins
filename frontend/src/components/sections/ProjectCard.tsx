@@ -16,7 +16,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         : []
 
   return (
-    <Card className="p-6 flex flex-col group">
+    <Card className="p-6 flex flex-col h-full group">
       {images.length > 0 && (
         <div className="-mx-6 -mt-6 mb-4 rounded-t-xl overflow-hidden">
           <ImageCarousel images={images} alt={project.title} />
@@ -27,7 +27,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {project.title}
       </h3>
 
-      <p className="text-sm text-slate-400 leading-relaxed mb-4 flex-1">
+      <p className="text-sm text-slate-400 leading-relaxed mb-4 flex-1 line-clamp-[8]">
         {project.description}
       </p>
 
