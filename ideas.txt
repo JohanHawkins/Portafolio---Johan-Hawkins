@@ -41,6 +41,12 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 39 | Reordenar secciones: Habilidades antes que Proyectos (App + Navbar) |
 | 40 | Corregir enlace de LinkedIn |
 | 41 | Reubicar imágenes del Dashboard en `frontend/public/projects/dashboard` |
+| 42 | Carrusel de imágenes por proyecto (autoplay + flechas + dots) y campo `images` en `Project` |
+| 43 | Seed del proyecto Dashboard con 4 imágenes |
+| 44 | Renombrar proyecto Dashboard → StockAdmin (nombre, descripción, tags) en seed |
+| 45 | Renombrar carpeta de imágenes `dashboard` → `stockadmin` y actualizar rutas en seed |
+| 46 | Renombrar proyecto Trydrog1 → Drogs+ (nombre, descripción, tags) en seed |
+| 47 | Verificar info del CV en portafolio: Hero → "Ingeniero de Software", About → Universidad del Magdalena (2025), stack real y experiencia |
 
 ### 🔨 Por hacer
 
@@ -51,6 +57,10 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 23 | Deploy frontend → Vercel |
 | 24 | Deploy backend → Render |
 | 25 | Configurar variables de entorno en producción |
+
+#### Notas
+- El enlace de LinkedIn del footer es el correcto: `johan-sebastian-hawkins-barrera-49a4b4323` (no cambiarlo).
+- Las imágenes de Drogs+ siguen en `/projects/trydrog1` (pendiente renombrar a `/projects/drogs`).
 
 #### P1 — Calidad y pulido
 

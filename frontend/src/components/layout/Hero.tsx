@@ -3,7 +3,7 @@ export default function Hero() {
     <section className="min-h-[70vh] flex items-center justify-center px-4 pt-16">
       <div className="text-center max-w-2xl">
         <p className="text-primary-400 font-medium text-sm tracking-wide uppercase mb-4">
-          Ingeniero de Sistemas Junior
+          Ingeniero de Software
         </p>
         <h1 className="text-4xl sm:text-5xl font-bold text-slate-100 leading-tight mb-6">
           Hola, soy{' '}
