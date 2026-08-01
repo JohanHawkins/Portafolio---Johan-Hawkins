@@ -1,18 +1,33 @@
+import { motion } from 'framer-motion'
 import { useProjects } from '../../hooks/useProjects'
 import SectionTitle from '../ui/SectionTitle'
-import Card from '../ui/Card'
-import Tag from '../ui/Tag'
-import ImageCarousel from '../ui/ImageCarousel'
+import StackedPile from '../ui/StackedPile'
+import { ProjectCard, ProjectMiniCard } from './ProjectCard'
+import { useSelection } from '../../context/SelectionContext'
+import { getProjectsForSkills } from '../../data/skillProjectRelations'
 
 export default function ProjectsSection() {
   const { data: projects, isLoading, isError } = useProjects()
+  const { selectedSkills } = useSelection()
+
+  const hasSelection = selectedSkills.length > 0
+  const all = projects ?? []
+  const related = hasSelection ? getProjectsForSkills(all, selectedSkills) : []
+  const relatedIds = new Set(related.map((project) => project.id))
+  const stackedProjects = hasSelection
+    ? all.filter((project) => !relatedIds.has(project.id))
+    : []
 
   return (
     <section id="projects" className="py-20 sm:py-28 bg-[#0e1527]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <SectionTitle
           title="Proyectos"
-          subtitle="Algunos trabajos que he realizado"
+          subtitle={
+            hasSelection
+              ? 'Proyectos asociados a las habilidades seleccionadas'
+              : 'Algunos trabajos que he realizado'
+          }
         />
 
         {isLoading && (
@@ -27,69 +42,65 @@ export default function ProjectsSection() {
           </p>
         )}
 
-        {projects && projects.length === 0 && (
+        {!isLoading && !isError && all.length === 0 && (
           <p className="text-center text-slate-500 py-12">
             No hay proyectos disponibles por el momento.
           </p>
         )}
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects?.map((project) => {
-            const images =
-              project.images.length > 0
-                ? project.images
-                : project.image
-                  ? [project.image]
-                  : []
-
-            return (
-              <Card key={project.id} className="p-6 flex flex-col group">
-                {images.length > 0 && (
-                  <div className="-mx-6 -mt-6 mb-4 rounded-t-xl overflow-hidden">
-                    <ImageCarousel images={images} alt={project.title} />
+        {!isLoading && !isError && all.length > 0 && (
+          <>
+            {hasSelection ? (
+              <>
+                {related.length === 0 ? (
+                  <p className="text-center text-slate-500 py-12">
+                    No hay proyectos asociados a las habilidades seleccionadas.
+                  </p>
+                ) : (
+                  <div className="flex gap-6 overflow-x-auto pb-4">
+                    {related.map((project) => (
+                      <motion.div
+                        layoutId={`project-${project.id}`}
+                        key={project.id}
+                        className="w-80 shrink-0 rounded-xl ring-1 ring-primary-400/50"
+                      >
+                        <ProjectCard project={project} />
+                      </motion.div>
+                    ))}
                   </div>
                 )}
 
-                <h3 className="text-lg font-semibold text-slate-100 mb-2">
-                  {project.title}
-                </h3>
-
-                <p className="text-sm text-slate-400 leading-relaxed mb-4 flex-1">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.tags.map((tag) => (
-                    <Tag key={tag} label={tag} />
+                <StackedPile
+                  count={stackedProjects.length}
+                  cardWidthClass="w-28"
+                  overlap={40}
+                  heightClass="h-28"
+                >
+                  {stackedProjects.map((project) => (
+                    <motion.div
+                      layoutId={`project-${project.id}`}
+                      key={project.id}
+                    >
+                      <ProjectMiniCard project={project} className="opacity-50" />
+                    </motion.div>
                   ))}
-                </div>
-
-                <div className="flex items-center gap-3 pt-3 border-t border-surface-100">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-medium text-slate-500 hover:text-slate-300 transition-colors"
-                    >
-                      GitHub
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-medium text-primary-400 hover:text-primary-300 transition-colors"
-                    >
-                      Live demo
-                    </a>
-                  )}
-                </div>
-              </Card>
-            )
-          })}
-        </div>
+                </StackedPile>
+              </>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {all.map((project) => (
+                  <motion.div
+                    layoutId={`project-${project.id}`}
+                    key={project.id}
+                    className="group"
+                  >
+                    <ProjectCard project={project} />
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
       </div>
     </section>
   )

@@ -5,18 +5,21 @@ import ProjectsSection from './components/sections/ProjectsSection'
 import SkillsSection from './components/sections/SkillsSection'
 import ContactSection from './components/sections/ContactSection'
 import Footer from './components/layout/Footer'
+import { SelectionProvider } from './context/SelectionContext'
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <Hero />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    <SelectionProvider>
+      <div className="min-h-screen">
+        <Navbar />
+        <Hero />
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <ContactSection />
+        <Footer />
+      </div>
+    </SelectionProvider>
   )
 }
 

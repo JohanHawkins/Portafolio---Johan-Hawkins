@@ -1,7 +1,16 @@
+import { AnimatePresence, motion } from 'framer-motion'
+import { useProjects } from '../../hooks/useProjects'
 import { useSkills } from '../../hooks/useSkills'
 import SectionTitle from '../ui/SectionTitle'
-import TechIcon3D from '../ui/TechIcon3D'
-import { techIcons } from '../../data/techIcons'
+import StackedPile from '../ui/StackedPile'
+import SkillIconCard from './SkillIconCard'
+import SkillFlow from './SkillFlow'
+import { useSelection } from '../../context/SelectionContext'
+import {
+  getProjectsForSkill,
+  isSkillRelatedToAny,
+} from '../../data/skillProjectRelations'
+import type { Skill } from '../../types/skill'
 
 const categoryLabels: Record<string, string> = {
   frontend: 'Frontend',
@@ -12,20 +21,58 @@ const categoryLabels: Record<string, string> = {
 
 export default function SkillsSection() {
   const { data: skills, isLoading, isError } = useSkills()
+  const { data: projects } = useProjects()
+  const { selectedSkills, toggleSkill, clearSkills } = useSelection()
 
-  const grouped = skills?.reduce<Record<string, typeof skills>>((acc, skill) => {
+  const all = skills ?? []
+  const projectsList = projects ?? []
+
+  const selections = selectedSkills.map((skillName) => ({
+    skillName,
+    projects: getProjectsForSkill(projectsList, skillName),
+  }))
+
+  const stackedSkills =
+    selectedSkills.length > 0
+      ? all.filter(
+          (skill) =>
+            !selectedSkills.includes(skill.name) &&
+            !isSkillRelatedToAny(skill, selectedSkills, projectsList),
+        )
+      : []
+
+  const stackedIds = new Set(stackedSkills.map((skill) => skill.id))
+  const activeSkills =
+    selectedSkills.length > 0
+      ? all.filter((skill) => !stackedIds.has(skill.id))
+      : all
+
+  const grouped = activeSkills.reduce<Record<string, Skill[]>>((acc, skill) => {
     const cat = skill.category
     if (!acc[cat]) acc[cat] = []
     acc[cat].push(skill)
     return acc
   }, {})
 
+  const skillButtonClass = (skill: Skill) => {
+    const isSelected = selectedSkills.includes(skill.name)
+    const isRelated =
+      !isSelected && isSkillRelatedToAny(skill, selectedSkills, projectsList)
+    if (isSelected) {
+      return 'ring-2 ring-primary-400 rounded-2xl shadow-card-hover'
+    }
+    if (isRelated) {
+      return 'ring-1 ring-primary-400/60 rounded-2xl'
+    }
+    return 'rounded-2xl'
+  }
+
   return (
     <section id="skills" className="py-20 sm:py-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <SectionTitle
           title="Habilidades"
-          subtitle="Tecnologías con las que trabajo"
+          subtitle="Haz clic en una o varias tecnologías para explorar sus proyectos"
         />
 
         {isLoading && (
@@ -40,38 +87,69 @@ export default function SkillsSection() {
           </p>
         )}
 
-        {grouped && Object.keys(grouped).length === 0 && (
+        {!isLoading && !isError && all.length === 0 && (
           <p className="text-center text-slate-500 py-12">
             No hay habilidades registradas.
           </p>
         )}
 
-        <div className="grid md:grid-cols-2 gap-10">
-          {grouped &&
-            Object.entries(grouped).map(([category, items]) => (
-              <div key={category}>
-                <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">
-                  {categoryLabels[category] ?? category}
-                </h3>
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4">
-                  {items.map((skill) => {
-                    const info = techIcons[skill.icon ?? '']
-                    if (info) {
-                      return <TechIcon3D key={skill.id} tech={info} />
-                    }
-                    return (
-                      <span
+        {!isLoading && !isError && all.length > 0 && (
+          <>
+            <div className="grid md:grid-cols-2 gap-10">
+              {Object.entries(grouped).map(([category, items]) => (
+                <div key={category}>
+                  <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">
+                    {categoryLabels[category] ?? category}
+                  </h3>
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4">
+                    {items.map((skill) => (
+                      <motion.button
+                        layoutId={`skill-${skill.id}`}
                         key={skill.id}
-                        className="px-4 py-2 bg-surface-50 rounded-lg border border-surface-100 text-sm font-medium text-slate-200 shadow-card"
+                        type="button"
+                        onClick={() => toggleSkill(skill.name)}
+                        aria-pressed={selectedSkills.includes(skill.name)}
+                        className={`block w-full text-left focus:outline-none ${skillButtonClass(skill)}`}
                       >
-                        {skill.name}
-                      </span>
-                    )
-                  })}
+                        <SkillIconCard skill={skill} />
+                      </motion.button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-        </div>
+              ))}
+            </div>
+
+            <StackedPile
+              count={stackedSkills.length}
+              cardWidthClass="w-24"
+              overlap={30}
+              heightClass="h-28"
+            >
+              {stackedSkills.map((skill) => (
+                <motion.button
+                  layoutId={`skill-${skill.id}`}
+                  key={skill.id}
+                  type="button"
+                  onClick={() => toggleSkill(skill.name)}
+                  className="block w-full text-left focus:outline-none"
+                  aria-pressed={false}
+                >
+                  <SkillIconCard skill={skill} dimmed />
+                </motion.button>
+              ))}
+            </StackedPile>
+
+            <AnimatePresence>
+              {selectedSkills.length > 0 && (
+                <SkillFlow
+                  key="skill-flow"
+                  selections={selections}
+                  onClear={clearSkills}
+                />
+              )}
+            </AnimatePresence>
+          </>
+        )}
       </div>
     </section>
   )

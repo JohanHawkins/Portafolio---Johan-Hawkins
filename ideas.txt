@@ -47,6 +47,10 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 45 | Renombrar carpeta de imágenes `dashboard` → `stockadmin` y actualizar rutas en seed |
 | 46 | Renombrar proyecto Trydrog1 → Drogs+ (nombre, descripción, tags) en seed |
 | 47 | Verificar info del CV en portafolio: Hero → "Ingeniero de Software", About → Universidad del Magdalena (2025), stack real y experiencia |
+| 48 | Interacción Habilidades ↔ Proyectos: clic en skill → Stacked Cards (pila de tarjetas no asociadas) + flujo horizontal "Skill → Proyectos" (framer-motion, layoutId, SelectionContext) |
+| 49 | Selección múltiple de habilidades (toggle): unión de proyectos asociados, pila de no asociados clicable y una fila de flujo por skill |
+| 50 | Normalizar/organizar estructura: extraer `ProjectCard`/`ProjectMiniCard` y `SkillIconCard`, agregar `images` al tipo `Project` del backend |
+| 51 | Crear README.md del proyecto |
 
 ### 🔨 Por hacer
 
