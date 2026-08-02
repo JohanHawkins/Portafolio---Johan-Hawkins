@@ -121,7 +121,7 @@ La aplicación estará disponible en `http://localhost:5173` y la API en `http:/
 | `npm start` | Ejecutar el build de producción |
 | `npm run seed` | Poblar la base de datos |
 | `npm test` | Ejecutar los tests con Vitest |
-| `npm run lint` | Lint (requiere ESLint instalado) |
+| `npm run lint` | Lint (ESLint + typescript-eslint) |
 
 ### Frontend
 
@@ -131,7 +131,7 @@ La aplicación estará disponible en `http://localhost:5173` y la API en `http:/
 | `npm run build` | Typecheck + build de producción |
 | `npm run preview` | Previsualizar el build |
 | `npm run optimize:images` | Convierte las imágenes de `public/projects` a WebP (sharp) |
-| `npm run lint` | Lint (requiere ESLint instalado) |
+| `npm run lint` | Lint (ESLint + typescript-eslint) |
 
 ## Variables de entorno
 

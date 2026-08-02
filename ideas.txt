@@ -62,6 +62,7 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 60 | Animaciones suaves: componente `Reveal` (whileInView) en SectionTitle, About, Contact y stagger de tarjetas en Proyectos; entrada animada en Hero |
 | 61 | Contacto por email: `emailService` con nodemailer (SMTP) envía el mensaje a `CONTACT_RECIPIENT` además de guardarlo en BD; envío best-effort (201 aun si falla el correo), config SMTP en `.env` y README |
 | 62 | Preparación de deploy: `dotenv` en backend (carga `.env`), `render.yaml` blueprint (PostgreSQL free + web service con `prisma db push` en preDeploy y health check), verificados builds (backend y frontend) y tests; instrucciones de deploy Vercel/Render en README |
+| 63 | QA end-to-end: verificado servidor activo (GET skills/projects 200, 16 skills, 3 proyectos con imágenes OK), POST contact 201, validación Zod 400, rate limit 429, 13 tests passing, builds OK; arreglado `npm run lint` (instalado eslint + typescript-eslint con flat config en backend y frontend, eliminada variable muerta `now` en rateLimiter, `argsIgnorePattern: '^_'` para `_next` del error middleware) y limpieza de archivos temporales (tmp-db-check.ts, logs server*.log) |
 
 ### 🔨 Por hacer
 
