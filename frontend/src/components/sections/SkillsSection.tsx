@@ -6,10 +6,7 @@ import StackedPile from '../ui/StackedPile'
 import SkillIconCard from './SkillIconCard'
 import SkillFlow from './SkillFlow'
 import { useSelection } from '../../context/SelectionContext'
-import {
-  getProjectsForSkill,
-  isSkillRelatedToAny,
-} from '../../data/skillProjectRelations'
+import { getProjectsForSkill } from '../../data/skillProjectRelations'
 import type { Skill } from '../../types/skill'
 
 const categoryLabels: Record<string, string> = {
@@ -34,11 +31,7 @@ export default function SkillsSection() {
 
   const stackedSkills =
     selectedSkills.length > 0
-      ? all.filter(
-          (skill) =>
-            !selectedSkills.includes(skill.name) &&
-            !isSkillRelatedToAny(skill, selectedSkills, projectsList),
-        )
+      ? all.filter((skill) => !selectedSkills.includes(skill.name))
       : []
 
   const stackedIds = new Set(stackedSkills.map((skill) => skill.id))
@@ -56,13 +49,8 @@ export default function SkillsSection() {
 
   const skillButtonClass = (skill: Skill) => {
     const isSelected = selectedSkills.includes(skill.name)
-    const isRelated =
-      !isSelected && isSkillRelatedToAny(skill, selectedSkills, projectsList)
     if (isSelected) {
       return 'ring-2 ring-primary-400 rounded-2xl shadow-card-hover'
-    }
-    if (isRelated) {
-      return 'ring-1 ring-primary-400/60 rounded-2xl'
     }
     return 'rounded-2xl'
   }
@@ -121,8 +109,8 @@ export default function SkillsSection() {
 
             <StackedPile
               count={stackedSkills.length}
-              cardWidthClass="w-24"
-              overlap={30}
+              cardWidth={6}
+              overlap={68}
               heightClass="h-28"
             >
               {stackedSkills.map((skill) => (

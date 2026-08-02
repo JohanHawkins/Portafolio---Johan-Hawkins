@@ -57,12 +57,12 @@ export default function ProjectsSection() {
                     No hay proyectos asociados a las habilidades seleccionadas.
                   </p>
                 ) : (
-                  <div className="flex gap-6 overflow-x-auto pb-4">
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6">
                     {related.map((project) => (
                       <motion.div
                         layoutId={`project-${project.id}`}
                         key={project.id}
-                        className="w-80 shrink-0 rounded-xl ring-1 ring-primary-400/50"
+                        className="h-full group rounded-xl ring-1 ring-primary-400/50"
                       >
                         <ProjectCard project={project} />
                       </motion.div>
@@ -72,7 +72,7 @@ export default function ProjectsSection() {
 
                 <StackedPile
                   count={stackedProjects.length}
-                  cardWidthClass="w-28"
+                  cardWidth={7}
                   overlap={40}
                   heightClass="h-28"
                 >

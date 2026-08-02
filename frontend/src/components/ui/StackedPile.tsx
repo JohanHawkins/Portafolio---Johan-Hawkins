@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 interface StackedPileProps {
   count: number
   children: ReactElement[]
-  cardWidthClass?: string
+  cardWidth?: number
   overlap?: number
   heightClass?: string
 }
@@ -12,7 +12,7 @@ interface StackedPileProps {
 export default function StackedPile({
   count,
   children,
-  cardWidthClass = 'w-24',
+  cardWidth = 6,
   overlap = 32,
   heightClass = 'h-28',
 }: StackedPileProps) {
@@ -24,16 +24,16 @@ export default function StackedPile({
       className="relative overflow-hidden"
       aria-hidden={count === 0}
     >
-      <div className={`${heightClass} flex items-center justify-center gap-1 px-4`}>
+      <div className={`${heightClass} flex items-center justify-center px-4`}>
         {children.map((child, i) =>
           cloneElement(child, {
             style: {
               ...child.props.style,
+              width: `${cardWidth}rem`,
               zIndex: i,
               flexShrink: 0,
               marginLeft: i === 0 ? 0 : -overlap,
             },
-            className: `${cardWidthClass} ${child.props.className ?? ''}`,
           }),
         )}
       </div>
