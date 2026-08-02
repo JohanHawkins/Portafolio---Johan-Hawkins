@@ -8,10 +8,17 @@ const skills = [
   { name: 'Angular', category: 'frontend', icon: 'angular', order: 3 },
   { name: 'HTML', category: 'frontend', icon: 'html5', order: 4 },
   { name: 'CSS', category: 'frontend', icon: 'css3', order: 5 },
-  { name: 'PHP', category: 'backend', icon: 'php', order: 6 },
-  { name: '.NET', category: 'backend', icon: 'dotnet', order: 7 },
-  { name: 'Java', category: 'backend', icon: 'java', order: 8 },
-  { name: 'Python', category: 'backend', icon: 'python', order: 9 },
+  { name: 'TypeScript', category: 'frontend', icon: 'typescript', order: 6 },
+  { name: 'PHP', category: 'backend', icon: 'php', order: 7 },
+  { name: '.NET', category: 'backend', icon: 'dotnet', order: 8 },
+  { name: 'Java', category: 'backend', icon: 'java', order: 9 },
+  { name: 'Python', category: 'backend', icon: 'python', order: 10 },
+  { name: 'Node.js', category: 'backend', icon: 'nodejs', order: 11 },
+  { name: 'Express', category: 'backend', icon: 'express', order: 12 },
+  { name: 'PostgreSQL', category: 'database', icon: 'postgresql', order: 13 },
+  { name: 'Tkinter', category: 'tools', icon: 'tkinter', order: 14 },
+  { name: 'pandas', category: 'tools', icon: 'pandas', order: 15 },
+  { name: 'openpyxl', category: 'tools', icon: 'openpyxl', order: 16 },
 ]
 
 const projects = [

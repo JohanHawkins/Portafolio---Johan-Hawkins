@@ -3,13 +3,20 @@ import {
   SiAngular,
   SiCss,
   SiDotnet,
+  SiExpress,
   SiHtml5,
   SiJavascript,
+  SiNodedotjs,
   SiOpenjdk,
+  SiPandas,
   SiPhp,
+  SiPostgresql,
   SiPython,
   SiReact,
+  SiTypescript,
 } from 'react-icons/si'
+import { FaFileExcel } from 'react-icons/fa'
+import { FiMonitor } from 'react-icons/fi'
 
 export interface TechIconInfo {
   name: string
@@ -27,4 +34,11 @@ export const techIcons: Record<string, TechIconInfo> = {
   php: { name: 'PHP', Icon: SiPhp, color: '#777bb4' },
   java: { name: 'Java', Icon: SiOpenjdk, color: '#ed8b00' },
   python: { name: 'Python', Icon: SiPython, color: '#3776ab' },
+  typescript: { name: 'TypeScript', Icon: SiTypescript, color: '#3178c6' },
+  nodejs: { name: 'Node.js', Icon: SiNodedotjs, color: '#5fa04e' },
+  express: { name: 'Express', Icon: SiExpress, color: '#ffffff' },
+  postgresql: { name: 'PostgreSQL', Icon: SiPostgresql, color: '#4169e1' },
+  tkinter: { name: 'Tkinter', Icon: FiMonitor, color: '#2dd4bf' },
+  pandas: { name: 'pandas', Icon: SiPandas, color: '#a78bfa' },
+  openpyxl: { name: 'openpyxl', Icon: FaFileExcel, color: '#217346' },
 }
