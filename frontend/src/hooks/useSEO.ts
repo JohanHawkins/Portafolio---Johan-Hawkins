@@ -53,7 +53,7 @@ export function useSEO({ title, description }: SEOOptions) {
       document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     canonical?.setAttribute('href', new URL('/', SITE_URL).toString())
     setProperty('og:url', new URL('/', SITE_URL).toString())
-    setProperty('og:image', absolutize('/projects/portafolio/V1.jpeg'))
-    setName('twitter:image', absolutize('/projects/portafolio/V1.jpeg'))
+    setProperty('og:image', absolutize('/projects/portafolio/V1.webp'))
+    setName('twitter:image', absolutize('/projects/portafolio/V1.webp'))
   }, [])
 }
