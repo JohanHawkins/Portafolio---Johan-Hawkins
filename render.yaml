@@ -1,0 +1,35 @@
+databases:
+  - name: portafolio-db
+    databaseName: portafolio
+    user: portafolio
+    plan: free
+
+services:
+  - type: web
+    name: portafolio-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    preDeployCommand: npx prisma db push --skip-generate
+    healthCheckPath: /api/projects
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATABASE_URL
+        fromDatabase:
+          name: portafolio-db
+          property: connectionString
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_SECURE
+        value: "false"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: CONTACT_RECIPIENT
+        sync: false

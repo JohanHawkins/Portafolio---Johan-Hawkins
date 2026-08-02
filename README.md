@@ -30,6 +30,7 @@ Portafolio personal como SPA (Single Page Application) sin autenticación. Prese
 
 ```
 .
+├── render.yaml               # Blueprint de deploy del backend (Render + PostgreSQL)
 ├── backend/
 │   ├── prisma/
 │   │   ├── schema.prisma        # Modelos Project, Skill, Message
@@ -183,8 +184,45 @@ El seed carga **16 habilidades** (frontend, backend, database, tools) y **3 proy
 - **Drogs+**: sistema de gestión para droguería con inventario, POS, historial de ventas, clientes y reportes, incluye facturación electrónica (Python, Tkinter, pandas, openpyxl).
 - **Portafolio**: este mismo portafolio web (React, TypeScript, Express, PostgreSQL).
 
-## Deploy (pendiente)
+## Deploy
 
-- Frontend → Vercel (definir `VITE_API_URL` y `VITE_SITE_URL`).
-- Backend → Render (con base de datos PostgreSQL).
-- Configurar variables de entorno en producción.
+### Backend → Render
+
+El archivo `render.yaml` en la raíz define el blueprint: una base de datos PostgreSQL gratuita y el servicio web con build, `preDeploy` (sincroniza el esquema con `prisma db push`) y health check en `/api/projects`.
+
+Pasos:
+
+1. Subir el repositorio a GitHub.
+2. En [Render](https://render.com) → **New → Blueprint** → elegir el repositorio.
+3. Render crea la base de datos `portafolio-db` y el servicio `portafolio-api`; `DATABASE_URL` se conecta automáticamente.
+4. Definir los secretos (botón **Environment** del servicio) marcados con `sync: false`:
+   - `SMTP_USER` → `Johanhawkins14@gmail.com`
+   - `SMTP_PASS` → contraseña de aplicación de Gmail
+   - `CONTACT_RECIPIENT` → `Johanhawkins14@gmail.com`
+5. El primer deploy ejecuta `prisma db push` automáticamente; los datos se cargan con `npm run seed` (una vez, contra la BD de producción).
+6. La URL del servicio queda como `https://<nombre>.onrender.com` (el health check debe responder 200).
+
+> **Free tier:** el servicio se suspende tras ~15 min sin tráfico y el health check lo despierta, por lo que la primera petición tras un idle puede tardar unos segundos.
+
+### Frontend → Vercel
+
+1. En [Vercel](https://vercel.com) → **Add New → Project** → importar el repositorio.
+2. Configuración del proyecto:
+   - **Root Directory**: `frontend`
+   - **Framework Preset**: Vite (se detecta automáticamente)
+   - Build y output por defecto (`npm run build` → `dist`).
+3. Variables de entorno (Settings → Environment Variables):
+   - `VITE_API_URL` → `https://<nombre>.onrender.com/api`
+   - `VITE_SITE_URL` → `https://<nombre>.vercel.app` (URL final del frontend)
+4. Deploy. Las imágenes de `frontend/public/projects` se publican junto con el sitio.
+
+### Variables de entorno en producción
+
+| Servicio | Variable | Valor |
+|----------|----------|-------|
+| Backend | `DATABASE_URL` | Auto (Render blueprint, base `portafolio-db`) |
+| Backend | `SMTP_USER` | Cuenta emisora de Gmail |
+| Backend | `SMTP_PASS` | Contraseña de aplicación (no la de la cuenta) |
+| Backend | `CONTACT_RECIPIENT` | Correo destino de los mensajes |
+| Frontend | `VITE_API_URL` | URL de la API en Render |
+| Frontend | `VITE_SITE_URL` | URL pública del frontend en Vercel |

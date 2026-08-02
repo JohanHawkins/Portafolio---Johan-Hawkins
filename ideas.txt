@@ -61,6 +61,7 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 59 | Optimizar imágenes: script `optimize-images.mjs` (sharp) convierte a WebP (~50-75% más ligeras), rutas `.webp` en seed/OG/Twitter, lazy loading + decoding async en imágenes |
 | 60 | Animaciones suaves: componente `Reveal` (whileInView) en SectionTitle, About, Contact y stagger de tarjetas en Proyectos; entrada animada en Hero |
 | 61 | Contacto por email: `emailService` con nodemailer (SMTP) envía el mensaje a `CONTACT_RECIPIENT` además de guardarlo en BD; envío best-effort (201 aun si falla el correo), config SMTP en `.env` y README |
+| 62 | Preparación de deploy: `dotenv` en backend (carga `.env`), `render.yaml` blueprint (PostgreSQL free + web service con `prisma db push` en preDeploy y health check), verificados builds (backend y frontend) y tests; instrucciones de deploy Vercel/Render en README |
 
 ### 🔨 Por hacer
 
@@ -68,9 +69,11 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 
 | # | Tarea |
 |---|-------|
-| 23 | Deploy frontend → Vercel |
-| 24 | Deploy backend → Render |
-| 25 | Configurar variables de entorno en producción |
+| 23 | Deploy frontend → Vercel (root dir `frontend`; `VITE_API_URL` y `VITE_SITE_URL`) |
+| 24 | Deploy backend → Render vía blueprint `render.yaml` |
+| 25 | Configurar variables de entorno en producción (secretos SMTP + `CONTACT_RECIPIENT` en Render; definir `VITE_API_URL`/`VITE_SITE_URL` en Vercel) |
+
+Pasos manuales (requieren cuentas): importar repo en Render → New Blueprint (crea BD + API), definir secretos SMTP; importar en Vercel con Root Directory `frontend` y las 2 variables. Tras el deploy, correr `npm run seed` una vez contra la BD de producción.
 
 #### Notas
 - El enlace de LinkedIn del footer es el correcto: `johan-sebastian-hawkins-barrera-49a4b4323` (no cambiarlo).
