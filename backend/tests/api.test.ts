@@ -9,6 +9,9 @@ vi.mock('../src/services/skillService', () => ({
 vi.mock('../src/services/contactService', () => ({
   createMessage: vi.fn(),
 }))
+vi.mock('../src/services/emailService', () => ({
+  sendContactEmail: vi.fn(),
+}))
 vi.mock('../src/middleware/rateLimiter', () => ({
   rateLimiter: () => (_req: unknown, _res: unknown, next: () => void) => next(),
 }))
@@ -18,10 +21,12 @@ import { app } from '../src/app'
 import { getAllProjects } from '../src/services/projectService'
 import { getAllSkills } from '../src/services/skillService'
 import { createMessage } from '../src/services/contactService'
+import { sendContactEmail } from '../src/services/emailService'
 
 const mockedGetAllProjects = vi.mocked(getAllProjects)
 const mockedGetAllSkills = vi.mocked(getAllSkills)
 const mockedCreateMessage = vi.mocked(createMessage)
+const mockedSendContactEmail = vi.mocked(sendContactEmail)
 
 const projects = [
   {
@@ -69,6 +74,11 @@ describe('API endpoints', () => {
     expect(res.status).toBe(201)
     expect(res.body).toEqual({ message: 'Mensaje enviado correctamente' })
     expect(mockedCreateMessage).toHaveBeenCalledWith({
+      name: 'Ana',
+      email: 'ana@example.com',
+      message: 'Hola',
+    })
+    expect(mockedSendContactEmail).toHaveBeenCalledWith({
       name: 'Ana',
       email: 'ana@example.com',
       message: 'Hola',

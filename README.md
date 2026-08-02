@@ -20,7 +20,7 @@ Portafolio personal como SPA (Single Page Application) sin autenticación. Prese
 - **Interacción Habilidades ↔ Proyectos**: al hacer clic en una o varias tecnologías, las habilidades no seleccionadas se retraen a una pila animada (Stacked Cards, clicables para ampliar el filtro) y en Proyectos se muestran en grilla solo los proyectos asociados.
 - Flujo horizontal `Habilidad → Proyectos` por cada habilidad seleccionada.
 - Carrusel de imágenes por proyecto (autoplay, flechas, dots) con lazy loading.
-- Formulario de contacto con validación Zod en backend (400 con detalles), rate limiting y middleware global de errores.
+- Formulario de contacto con validación Zod en backend (400 con detalles), rate limiting, middleware global de errores y envío del mensaje por email (nodemailer/SMTP) además del guardado en BD.
 - Estados de loading / error / empty en frontend.
 - SEO: meta tags, Open Graph, Twitter Cards, canonical, JSON-LD (Person) y título dinámico según el filtro activo.
 - Imágenes en WebP optimizadas (~50–75% más ligeras) y animaciones de scroll reveal (framer-motion).
@@ -140,6 +140,14 @@ La aplicación estará disponible en `http://localhost:5173` y la API en `http:/
 |----------|-------------|
 | `DATABASE_URL` | Cadena de conexión a PostgreSQL |
 | `PORT` | Puerto del servidor (por defecto 4000) |
+| `SMTP_HOST` | Servidor SMTP (por defecto `smtp.gmail.com`) |
+| `SMTP_PORT` | Puerto SMTP (por defecto 587) |
+| `SMTP_SECURE` | `true` si SMTP usa SSL (por defecto `false`, STARTTLS) |
+| `SMTP_USER` | Cuenta de correo emisora |
+| `SMTP_PASS` | Contraseña de aplicación del emisor (no la de la cuenta) |
+| `CONTACT_RECIPIENT` | Correo al que llegan los mensajes del formulario |
+
+> **Gmail:** activa la verificación en 2 pasos y genera una **Contraseña de aplicación** en https://myaccount.google.com/apppasswords; úsala como `SMTP_PASS`.
 
 ### Frontend (`.env`)
 

@@ -60,6 +60,7 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 58 | Testing de API: vitest + supertest, refactor `app.ts`, `errorHandler` devuelve 400 para errores Zod, tests de `contactSchema`, `rateLimiter` y endpoints (GET projects/skills, POST contact) |
 | 59 | Optimizar imágenes: script `optimize-images.mjs` (sharp) convierte a WebP (~50-75% más ligeras), rutas `.webp` en seed/OG/Twitter, lazy loading + decoding async en imágenes |
 | 60 | Animaciones suaves: componente `Reveal` (whileInView) en SectionTitle, About, Contact y stagger de tarjetas en Proyectos; entrada animada en Hero |
+| 61 | Contacto por email: `emailService` con nodemailer (SMTP) envía el mensaje a `CONTACT_RECIPIENT` además de guardarlo en BD; envío best-effort (201 aun si falla el correo), config SMTP en `.env` y README |
 
 ### 🔨 Por hacer
 
