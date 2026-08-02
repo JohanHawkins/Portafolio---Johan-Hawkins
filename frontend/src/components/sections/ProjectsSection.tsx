@@ -88,11 +88,15 @@ export default function ProjectsSection() {
               </>
             ) : (
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6">
-                {all.map((project) => (
+                {all.map((project, index) => (
                   <motion.div
                     layoutId={`project-${project.id}`}
                     key={project.id}
                     className="h-full group"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
                   >
                     <ProjectCard project={project} />
                   </motion.div>

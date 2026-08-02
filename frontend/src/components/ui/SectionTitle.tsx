@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 interface SectionTitleProps {
   title: string
   subtitle?: string
@@ -5,7 +7,7 @@ interface SectionTitleProps {
 
 export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
   return (
-    <div className="text-center mb-12">
+    <Reveal className="text-center mb-12">
       <h2 className="text-3xl sm:text-4xl font-bold text-slate-100">
         {title}
       </h2>
@@ -14,6 +16,6 @@ export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
           {subtitle}
         </p>
       )}
-    </div>
+    </Reveal>
   )
 }

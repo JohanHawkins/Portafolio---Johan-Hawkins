@@ -1,7 +1,14 @@
+import { motion } from 'framer-motion'
+
 export default function Hero() {
   return (
     <section className="min-h-[70vh] flex items-center justify-center px-4 pt-16">
-      <div className="text-center max-w-2xl">
+      <motion.div
+        className="text-center max-w-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
         <p className="text-primary-400 font-medium text-sm tracking-wide uppercase mb-4">
           Ingeniero de Software
         </p>
@@ -31,7 +38,7 @@ export default function Hero() {
             Contactar
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

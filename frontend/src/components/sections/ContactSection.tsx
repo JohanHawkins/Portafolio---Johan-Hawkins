@@ -1,6 +1,7 @@
 import { useContactForm } from '../../hooks/useContactForm'
 import SectionTitle from '../ui/SectionTitle'
 import Button from '../ui/Button'
+import Reveal from '../ui/Reveal'
 
 export default function ContactSection() {
   const { mutate, isPending, isSuccess, isError } = useContactForm()
@@ -26,7 +27,8 @@ export default function ContactSection() {
           subtitle="Envíame un mensaje y te responderé lo antes posible"
         />
 
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-5">
+        <Reveal>
+          <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-5">
           <div>
             <label htmlFor="name" className="sr-only">Nombre</label>
             <input
@@ -77,7 +79,8 @@ export default function ContactSection() {
               Error al enviar el mensaje. Intenta de nuevo.
             </p>
           )}
-        </form>
+          </form>
+        </Reveal>
       </div>
     </section>
   )
