@@ -41,12 +41,12 @@ const projects = [
     title: 'Drogs+',
     description:
       'Sistema de gestión para droguería (escritorio, moneda COP): inventario con alertas de vencimiento, POS con búsqueda instantánea, historial de ventas con filtros y exportación (Excel/TXT/PDF), clientes y reportes. Incluye facturación electrónica (PDF + XML DIAN).',
-    image: '/projects/trydrog1/V1.jpg',
+    image: '/projects/drogs/V1.jpg',
     images: [
-      '/projects/trydrog1/V1.jpg',
-      '/projects/trydrog1/V2.jpg',
-      '/projects/trydrog1/V3.jpg',
-      '/projects/trydrog1/V4.jpg',
+      '/projects/drogs/V1.jpg',
+      '/projects/drogs/V2.jpg',
+      '/projects/drogs/V3.jpg',
+      '/projects/drogs/V4.jpg',
     ],
     tags: ['Python', 'Tkinter', 'pandas', 'openpyxl'],
     githubUrl: null,
