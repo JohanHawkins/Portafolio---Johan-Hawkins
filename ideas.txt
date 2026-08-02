@@ -57,6 +57,9 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 55 | Corregir filtro de habilidades: solo las seleccionadas permanecen activas (eliminado el resaltado de habilidades "relacionadas" no seleccionadas) |
 | 56 | Renombrar carpeta de imágenes `trydrog1` → `drogs` y actualizar rutas en seed (Drogs+) |
 | 57 | SEO básico: meta tags (description, author, theme-color), Open Graph, Twitter Cards, canonical, favicon SVG, JSON-LD (Person) y title dinámico según el filtro (`useSEO` + `SeoManager`, `VITE_SITE_URL` absolutiza URLs) |
+| 58 | Testing de API: vitest + supertest, refactor `app.ts`, `errorHandler` devuelve 400 para errores Zod, tests de `contactSchema`, `rateLimiter` y endpoints (GET projects/skills, POST contact) |
+| 59 | Optimizar imágenes: script `optimize-images.mjs` (sharp) convierte a WebP (~50-75% más ligeras), rutas `.webp` en seed/OG/Twitter, lazy loading + decoding async en imágenes |
+| 60 | Animaciones suaves: componente `Reveal` (whileInView) en SectionTitle, About, Contact y stagger de tarjetas en Proyectos; entrada animada en Hero |
 
 ### 🔨 Por hacer
 
@@ -72,14 +75,6 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 - El enlace de LinkedIn del footer es el correcto: `johan-sebastian-hawkins-barrera-49a4b4323` (no cambiarlo).
 - El seed tiene 16 habilidades (frontend, backend, database, tools) y 3 proyectos (StockAdmin, Drogs+, Portafolio).
 - `isSkillRelatedToSelected` / `isSkillRelatedToAny` se eliminaron de `skillProjectRelations.ts` (lógica de resaltado de relacionadas ya no se usa).
-
-#### P1 — Calidad y pulido
-
-| # | Tarea |
-|---|-------|
-| 27 | Animaciones suaves (framer-motion o CSS transitions) |
-| 29 | Optimizar imágenes (WebP, lazy loading) |
-| 31 | Testing de API endpoints |
 
 #### P2 — Futuro
 
