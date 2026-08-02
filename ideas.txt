@@ -51,6 +51,10 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 49 | Selección múltiple de habilidades (toggle): unión de proyectos asociados, pila de no asociados clicable y una fila de flujo por skill |
 | 50 | Normalizar/organizar estructura: extraer `ProjectCard`/`ProjectMiniCard` y `SkillIconCard`, agregar `images` al tipo `Project` del backend |
 | 51 | Crear README.md del proyecto |
+| 52 | Corregir apilado (StackedPile): aplicar ancho vía `style` inline (el `w-full` de la grilla sobreescribía `w-24`/`w-28`) y traslape exacto sin `gap` |
+| 53 | Reemplazar scroll horizontal en la vista de proyectos filtrados por grilla responsive (elimina la barra deslizante) |
+| 54 | Agregar habilidades faltantes de los proyectos: Node.js, Express, PostgreSQL, TypeScript, Tkinter, pandas, openpyxl con sus iconos (`SiTypescript`, `SiNodedotjs`, `SiExpress`, `SiPostgresql`, `SiPandas`, `FiMonitor`, `FaFileExcel`) + seed actualizado a 16 skills (nuevas categorías `database` y `tools`) |
+| 55 | Corregir filtro de habilidades: solo las seleccionadas permanecen activas (eliminado el resaltado de habilidades "relacionadas" no seleccionadas) |
 
 ### 🔨 Por hacer
 
@@ -65,6 +69,8 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 #### Notas
 - El enlace de LinkedIn del footer es el correcto: `johan-sebastian-hawkins-barrera-49a4b4323` (no cambiarlo).
 - Las imágenes de Drogs+ siguen en `/projects/trydrog1` (pendiente renombrar a `/projects/drogs`).
+- El seed tiene 16 habilidades (frontend, backend, database, tools) y 3 proyectos (StockAdmin, Drogs+, Portafolio).
+- `isSkillRelatedToSelected` / `isSkillRelatedToAny` se eliminaron de `skillProjectRelations.ts` (lógica de resaltado de relacionadas ya no se usa).
 
 #### P1 — Calidad y pulido
 
