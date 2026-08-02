@@ -131,6 +131,7 @@ La aplicación estará disponible en `http://localhost:5173` y la API en `http:/
 | Variable | Descripción |
 |----------|-------------|
 | `VITE_API_URL` | URL base de la API (por defecto `http://localhost:4000/api`) |
+| `VITE_SITE_URL` | URL pública del sitio (para SEO/Open Graph; por defecto `http://localhost:5173`) |
 
 ## API
 

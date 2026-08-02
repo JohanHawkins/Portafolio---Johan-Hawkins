@@ -56,6 +56,7 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 | 54 | Agregar habilidades faltantes de los proyectos: Node.js, Express, PostgreSQL, TypeScript, Tkinter, pandas, openpyxl con sus iconos (`SiTypescript`, `SiNodedotjs`, `SiExpress`, `SiPostgresql`, `SiPandas`, `FiMonitor`, `FaFileExcel`) + seed actualizado a 16 skills (nuevas categorías `database` y `tools`) |
 | 55 | Corregir filtro de habilidades: solo las seleccionadas permanecen activas (eliminado el resaltado de habilidades "relacionadas" no seleccionadas) |
 | 56 | Renombrar carpeta de imágenes `trydrog1` → `drogs` y actualizar rutas en seed (Drogs+) |
+| 57 | SEO básico: meta tags (description, author, theme-color), Open Graph, Twitter Cards, canonical, favicon SVG, JSON-LD (Person) y title dinámico según el filtro (`useSEO` + `SeoManager`, `VITE_SITE_URL` absolutiza URLs) |
 
 ### 🔨 Por hacer
 
@@ -76,7 +77,6 @@ SPA (Single Page Application) sin autenticación. Una sola página con secciones
 
 | # | Tarea |
 |---|-------|
-| 26 | SEO básico: meta tags, Open Graph, title dinámico |
 | 27 | Animaciones suaves (framer-motion o CSS transitions) |
 | 29 | Optimizar imágenes (WebP, lazy loading) |
 | 31 | Testing de API endpoints |
