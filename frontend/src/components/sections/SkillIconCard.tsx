@@ -15,7 +15,9 @@ export default function SkillIconCard({
 }: SkillIconCardProps) {
   const info = techIcons[skill.icon ?? '']
 
-  const dimClass = dimmed ? 'opacity-50' : ''
+  const dimClass = dimmed
+    ? 'opacity-50 transition-opacity duration-200 ease-out group-hover/skill:opacity-100'
+    : ''
 
   if (!info) {
     return (

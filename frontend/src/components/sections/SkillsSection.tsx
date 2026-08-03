@@ -119,7 +119,9 @@ export default function SkillsSection() {
                   key={skill.id}
                   type="button"
                   onClick={() => toggleSkill(skill.name)}
-                  className="block w-full text-left focus:outline-none"
+                  whileHover={{ y: -6, zIndex: 40 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+                  className="group/skill block w-full text-left focus:outline-none"
                   aria-pressed={false}
                 >
                   <SkillIconCard skill={skill} dimmed />
