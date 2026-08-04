@@ -26,12 +26,13 @@ const projects = [
     title: 'StockAdmin',
     description:
       'Sistema de gestión de inventario con roles (Admin/Empleado), CRUD de productos y categorías, movimientos de stock con validación y estadísticas. Backend API REST con PostgreSQL. Cuentas de prueba: admin@admin.com / empleado@empleado.com (123456).',
-    image: '/projects/stockadmin/V1.webp',
+    image: '/projects/stockadmin/V1.png',
     images: [
-      '/projects/stockadmin/V1.webp',
-      '/projects/stockadmin/V2.webp',
-      '/projects/stockadmin/V3.webp',
-      '/projects/stockadmin/V4.webp',
+      '/projects/stockadmin/V1.png',
+      '/projects/stockadmin/V2.png',
+      '/projects/stockadmin/V3.png',
+      '/projects/stockadmin/V4.png',
+      '/projects/stockadmin/V5.png',
     ],
     tags: ['Angular', 'Node.js', 'Express', 'PostgreSQL'],
     githubUrl: null,

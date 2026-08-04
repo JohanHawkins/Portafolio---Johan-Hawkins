@@ -32,7 +32,7 @@ const projects = [
   {
     id: 1,
     title: 'StockAdmin',
-    image: '/projects/stockadmin/V1.webp',
+    image: '/projects/stockadmin/V1.png',
     images: [],
     tags: ['Angular'],
     githubUrl: null,
