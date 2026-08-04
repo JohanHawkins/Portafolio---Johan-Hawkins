@@ -12,6 +12,20 @@ Portafolio personal como SPA (Single Page Application) sin autenticación. Prese
 | Testing | Vitest, Supertest (backend) |
 | Herramientas | Sharp (optimización de imágenes a WebP) |
 
+## Screenshots
+
+> Capturas del portafolio en ejecución (dark-mode, escritorio).
+
+![Vista completa del portafolio](screenshots/full.webp)
+
+| Hero | Habilidades |
+|------|-------------|
+| ![Hero](screenshots/hero.webp) | ![Habilidades](screenshots/skills.webp) |
+
+| Proyectos | Contacto |
+|-----------|----------|
+| ![Proyectos](screenshots/projects.webp) | ![Contacto](screenshots/contact.webp) |
+
 ## Características
 
 - SPA con secciones: Inicio, Sobre mí, Habilidades, Proyectos y Contacto.
@@ -100,15 +114,17 @@ cd frontend
 npm install
 
 # 1. Crear el archivo .env a partir del ejemplo
-#    VITE_API_URL=http://localhost:4000/api
-#    VITE_SITE_URL=http://localhost:5173
+#    VITE_API_URL=/api            (el dev server de Vite lo proxea a http://localhost:4000)
+#    VITE_SITE_URL=http://localhost:3000
 cp .env.example .env
 
 # 2. Iniciar en desarrollo
 npm run dev
 ```
 
-La aplicación estará disponible en `http://localhost:5173` y la API en `http://localhost:4000/api`.
+La aplicación estará disponible en `http://localhost:3000` y la API en `http://localhost:4000/api`.
+
+> **Proxy de Vite:** en desarrollo el dev server reenvía las peticiones `/api` a `http://localhost:4000`, así que no hace falta exponer el backend por separado (útil para túneles como VS Code Dev Tunnels: basta con compartir el puerto 3000).
 
 ## Scripts
 
@@ -154,8 +170,8 @@ La aplicación estará disponible en `http://localhost:5173` y la API en `http:/
 
 | Variable | Descripción |
 |----------|-------------|
-| `VITE_API_URL` | URL base de la API (por defecto `http://localhost:4000/api`) |
-| `VITE_SITE_URL` | URL pública del sitio (para SEO/Open Graph; por defecto `http://localhost:5173`) |
+| `VITE_API_URL` | URL base de la API (por defecto `/api`, que el dev server de Vite proxea a `http://localhost:4000`) |
+| `VITE_SITE_URL` | URL pública del sitio (para SEO/Open Graph; por defecto `http://localhost:3000`) |
 
 ## API
 
