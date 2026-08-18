@@ -35,7 +35,7 @@ const projects = [
       '/projects/stockadmin/V5.webp',
     ],
     tags: ['Angular', 'Node.js', 'Express', 'PostgreSQL'],
-    githubUrl: null,
+    githubUrl: 'https://github.com/JohanHawkins/StockAdmin',
     liveUrl: null,
   },
   {
@@ -50,7 +50,7 @@ const projects = [
       '/projects/drogs/V4.webp',
     ],
     tags: ['Python', 'Tkinter', 'pandas', 'openpyxl'],
-    githubUrl: null,
+    githubUrl: 'https://github.com/JohanHawkins/Try1Drog',
     liveUrl: null,
   },
   {
@@ -64,7 +64,7 @@ const projects = [
       '/projects/portafolio/V3.webp',
     ],
     tags: ['React', 'TypeScript', 'Express', 'PostgreSQL'],
-    githubUrl: null,
+    githubUrl: 'https://github.com/JohanHawkins/Portafolio---Johan-Hawkins',
     liveUrl: null,
   },
   {
@@ -74,9 +74,11 @@ const projects = [
     image: '/projects/boty/V1.webp',
     images: [
       '/projects/boty/V1.webp',
+      '/projects/boty/V2.webp',
+      '/projects/boty/V3.webp'
     ],
     tags: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL'],
-    githubUrl: null,
+    githubUrl: 'https://github.com/JohanHawkins/Boty',
     liveUrl: null,
   },
 ]
