@@ -67,6 +67,18 @@ const projects = [
     githubUrl: null,
     liveUrl: null,
   },
+  {
+    title: 'Boty',
+    description:
+      'Asistente conversacional de IA con interfaz interactiva de chat. Backend en Node.js/Express con soporte dual: API key compatible con OpenAI o modo demo autónomo que detecta intenciones mediante tokenización. Incluye registro de usuarios, JWT, escalabilidad por niveles (Básico, Medio, Avanzado/Industrial) y preparado para RAG.',
+    image: '/projects/boty/V1.webp',
+    images: [
+      '/projects/boty/V1.webp',
+    ],
+    tags: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL'],
+    githubUrl: null,
+    liveUrl: null,
+  },
 ]
 
 async function main() {

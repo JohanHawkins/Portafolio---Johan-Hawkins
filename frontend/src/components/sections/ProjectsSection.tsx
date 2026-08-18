@@ -20,7 +20,7 @@ export default function ProjectsSection() {
 
   return (
     <section id="projects" className="py-20 sm:py-28 bg-[#0e1527]">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <SectionTitle
           title="Proyectos"
           subtitle={
@@ -57,7 +57,7 @@ export default function ProjectsSection() {
                     No hay proyectos asociados a las habilidades seleccionadas.
                   </p>
                 ) : (
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6">
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr gap-6">
                     {related.map((project) => (
                       <motion.div
                         layoutId={`project-${project.id}`}
@@ -87,7 +87,7 @@ export default function ProjectsSection() {
                 </StackedPile>
               </>
             ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr gap-6">
                 {all.map((project, index) => (
                   <motion.div
                     layoutId={`project-${project.id}`}
